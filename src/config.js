@@ -1,3 +1,3 @@
-const baseurl = 'http://localhost:2021'
+const baseurl = 'https://sdp19server-production.up.railway.app'
 
 export default baseurl;
