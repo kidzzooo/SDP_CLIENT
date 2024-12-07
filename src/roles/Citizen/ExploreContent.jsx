@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { BookOpen, Video, FileQuestion } from 'lucide-react';
+import baseurl from '@/config';
 
 const ExploreContent = () => {
   const [contents, setContents] = useState([]); // Fetch data from backend
@@ -16,7 +17,7 @@ const ExploreContent = () => {
   // Fetch contents from the backend
   const fetchContents = async () => {
     try {
-      const response = await axios.get('http://localhost:2021/api/contents');
+      const response = await axios.get(`${baseurl}/api/contents`);
       if (Array.isArray(response.data)) {
         setContents(response.data);
       } else {

@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import baseurl from '@/config';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ export default function LoginPage() {
 
     try {
       // Make API call with Axios
-      const response = await axios.post('http://localhost:2021/api/users/login', {
+      const response = await axios.post(`${baseurl}/api/users/login`, {
         username,
         password,
       });

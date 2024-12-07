@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../Layout";
+import baseurl from "@/config";
 
 // Helper function to transform YouTube URLs to embed format
 const getYouTubeEmbedUrl = (url) => {
@@ -26,7 +27,7 @@ const ContentDetails = () => {
     const fetchContentDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:2021/api/contents/${id}`
+          `${baseurl}/api/contents/${id}`
         );
         setContent(response.data);
         setLoading(false);

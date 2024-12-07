@@ -9,9 +9,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import PropTypes from 'prop-types';
 import { Toaster,toast } from 'sonner';
+import baseurl from '@/config';
 const fetchUsersByRole = async (role, setFunction) => {
   try {
-    const response = await axios.get(`http://localhost:2021/api/users/role/${role}`);
+    const response = await axios.get(`${baseurl}/api/users/role/${role}`);
     if (Array.isArray(response.data)) {
       setFunction(response.data);
     } else {
@@ -41,7 +42,7 @@ export default function ManageUsersPage() {
     e.preventDefault();
     try {
       const requestData = { ...newUser, role: currentRole.toUpperCase() }; // Set role dynamically
-      const response = await axios.post('http://localhost:2021/api/users', requestData);
+      const response = await axios.post(`${baseurl}/api/users`, requestData);
       if (response.status === 200) {
         const createdUser = response.data;
         if (currentRole === 'Educator') {
@@ -60,7 +61,7 @@ export default function ManageUsersPage() {
   // Handle user deletion
   const handleDeleteUser = async (id, role) => {
     try {
-      const response = await axios.delete(`http://localhost:2021/api/users/${id}`);
+      const response = await axios.delete(`${baseurl}/api/users/${id}`);
       if(response.status === 200) {
         toast.info('User deleted successfully');
       }

@@ -19,6 +19,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Pencil, Trash2 } from "lucide-react";
+import baseurl from "@/config";
 
 const ManageContent = () => {
   const [selectedType, setSelectedType] = useState("");
@@ -28,7 +29,7 @@ const ManageContent = () => {
   // Fetch content logic
   const fetchContents = async () => {
     try {
-      const response = await axios.get("http://localhost:2021/api/contents");
+      const response = await axios.get(`${baseurl}/api/contents`);
       if (Array.isArray(response.data)) {
         setContents(response.data);
       } else {
@@ -55,7 +56,7 @@ const ManageContent = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:2021/api/contents/${id}`);
+      await axios.delete(`${baseurl}/api/contents/${id}`);
       setContents((prev) => prev.filter((content) => content.id !== id));
     } catch (error) {
       console.error(`Error deleting content with id ${id}:`, error);

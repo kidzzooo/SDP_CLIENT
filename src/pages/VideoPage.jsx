@@ -18,7 +18,7 @@ const AddVideoPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:2021/api/contents', {
+      const response = await axios.post(`${baseurl}/api/contents`, {
         title: formData.title,
         description: formData.description,
         resourceUrl: formData.videoUrl, // Ensure this mapping

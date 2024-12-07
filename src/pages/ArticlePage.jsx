@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Toaster,toast } from 'sonner';
 import Layout from '../roles/Layout';
+import baseurl from '@/config';
 const AddArticlePage = () => {
   const [formData, setFormData] = useState({
     title: '',
@@ -31,7 +32,7 @@ const AddArticlePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:2021/api/contents', {
+      const response = await axios.post(`${baseurl}/api/contents`, {
         ...formData,
         contentType: 'ARTICLE', // Set content type explicitly
       });
